@@ -1,0 +1,75 @@
+[site]
+code = "xx"
+name = "XX"
+
+[sap]
+base_url = "https://myXXXXXX.s4hana.cloud.sap"
+odata_path = "/sap/opu/odata/sap/ZUI_IM_BCTKTTT_O2/ZIM_BCTKTTT_MAIN"
+client = "100"
+browser_channel = "msedge"
+max_relogin_attempts = 2
+max_incomplete_retries = 3
+incomplete_retry_wait_seconds = [5, 15, 30]
+test_max_pages = 10
+
+[paths]
+onedrive_subdir = "XX Site Documents/Inventory_SAP"
+fallback_dir = "SAP_Inventory_Output"
+input_subdir = "Data_Input"
+
+[sources]
+stock_count_csv_url = "https://docs.google.com/spreadsheets/d/e/<ID>/pub?output=csv"
+shelf_life_file = "Shelflife.xlsx"
+capacity_file = "Capacity.xlsx"
+manual_materials_file = "SAP_MA_BO_SUNG.txt"
+fefo_file = "FEFO.xlsx"
+
+[location]
+strip_prefixes = ["XXPKG", "PKG", "XX"]
+warehouse_group_prefixes = ["BL", "F", "G", "E", "D"]
+display_exclude_prefixes = ["K", "H"]
+display_exclude_keywords = ["LOOSE"]
+empty_location_exclusions = []
+empty_location_capacity_column = "Capacity Bot"
+
+[shelf_life]
+expired_max = 0
+near_expiry_below = 30
+traditional_below = 66
+emart_below = 69
+supermarket_max = 71
+
+[fefo]
+lot_split_days = 7
+min_quantity = 100
+display_max_slots = 6
+workbook_sheet = "Update Actual Count"
+workbook_start_row = 4
+
+[manual]
+location_history_retention_days = 7
+
+[audit]
+enabled = true
+history_retention_days = 7
+qty_delta_threshold = 100
+confirm_runs = 2
+pending_max_age_minutes = 120
+max_record_drop_ratio = 0.05
+max_consecutive_suspect = 1
+max_push_attempts = 3
+
+[publish]
+fefo_to_google_sheet = true
+empty_locations_to_google_sheet = true
+audit_to_google_sheet = true
+capacity_script_url = ""
+fefo_script_url = ""
+secret = ""
+
+[run]
+lock_stale_hours = 3.0
+
+[monitoring]
+expected_interval_minutes = 30
+gap_warning_minutes = 45
